@@ -1,0 +1,59 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center" id="wrapper">
+ 
+<app-task>Eddie Test </app-task>  
+
+<h1>New Task</h1>
+  <form (submit)="createTask()" >
+      <p> {{ newTask | json }} </p>
+    <label for="newTask.title">Title:
+        <input type="text" name="newTask.title" [(ngModel)]='newTask.title'/></label>
+    <label for="newTask.description">Description:
+        <input type="text" name="newTask.description" [(ngModel)]='newTask.description'/></label>
+    <input type="submit" value="Create Task">
+  </form>
+  <br>  <hr>  <br>
+
+  <div id="mydiv">    
+    <h1>Task List</h1>
+    <table>
+      <tbody>
+
+        <tr *ngFor="let task of tasks; let idx = index" >
+          <td>{{ task.title }} <br> {{ task.description }}  </td>
+          <td><button (click)='edit(task._id)'>Edit</button>
+             <br> 
+             <button (click)='delete(task._id)'>Delete</button> </td>
+                   
+          <button (click)="info(task)">Info</button>    <!-- or info(idx) -->
+          <button (click)="show(task)">Show</button>    <!-- or info(idx) -->
+        </tr>
+      </tbody>
+    </table>        
+  </div>
+  
+  <div id="taskapp">
+    <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task> 
+  </div>
+
+  <div>
+    <p>{{ task?.title }}</p>             <!-- or Elvis it  task?.title -->
+    <p>{{ task?.description }}</p>       <!--  show it Only if it exists, prevent error -->
+  </div>
+  <br>
+
+  <h1>Edit Task</h1>
+  <form (submit)="saveTask(eTask._id)" >
+      <!-- <p> {{ eTask | json }} </p> -->
+    <label for="eTask.title">Title:
+        <input type="text" name="eTask.title" [(ngModel)]="eTask.title"  size='20'/></label>        
+    <label for="eTask.description">Description:
+        <input type="text" name="eTask.description" [(ngModel)]='eTask.description' size='50' /></label>
+        <br> 
+    <input type="submit" value="Save Task">
+  </form>
+  
+  <router-outlet></router-outlet>
+
+
+</div> <!-- Wrapper-->

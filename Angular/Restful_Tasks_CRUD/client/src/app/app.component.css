@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#wrapper {
+    background-color: blanchedalmond;
+    min-height: 650px;
+}
+
+h2,h3 {
+    display: inline;
+}
+
+button {
+    margin:2px;
+    padding:2px;
+    width: 50px;
+}
+
+#mydiv {
+    display: inline-block;
+}
+tbody{
+    text-align: left;
+}
